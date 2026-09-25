@@ -108,3 +108,30 @@ export function BloombergLogo({ className = "w-5 h-5" }) {
     </svg>
   );
 }
+
+// Boomi Logo (for Associate EDI for X12)
+export function BoomiLogo({ className = "w-5 h-5" }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" fill="#002244" />
+      <path
+        d="M32 24V74C32 75.1 32.9 76 34 76H43C44.1 76 45 75.1 45 74V63.5C47.8 66.8 52.3 69 57.5 69C68 69 76 60.5 76 49.5C76 38.5 68 30 57.5 30C52.3 30 47.8 32.2 45 35.5V24C45 22.9 44.1 22 43 22H34C32.9 22 32 22.9 32 24ZM45 49.5C45 42.5 50 37.5 57 37.5C64 37.5 69 42.5 69 49.5C69 56.5 64 61.5 57 61.5C50 61.5 45 56.5 45 49.5Z"
+        fill="#00E3A5"
+      />
+      <circle cx="57" cy="49.5" r="4.5" fill="#00E3A5" />
+    </svg>
+  );
+}
+
+// First Alliance Church Logo
+export function FirstAllianceLogo({ className = "w-5 h-5" }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" rx="16" fill="#1E293B" />
+      <path d="M50 18V50M34 30H66" stroke="#38BDF8" strokeWidth="7" strokeLinecap="round" />
+      <circle cx="50" cy="70" r="15" stroke="#60A5FA" strokeWidth="5" fill="none" />
+      <path d="M38 70H62" stroke="#60A5FA" strokeWidth="4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
