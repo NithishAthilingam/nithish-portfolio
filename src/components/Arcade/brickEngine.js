@@ -3,8 +3,8 @@
 
 import { sound } from './soundEffects';
 
-export const CANVAS_WIDTH = 500;
-export const CANVAS_HEIGHT = 650;
+export const CANVAS_WIDTH = 480;
+export const CANVAS_HEIGHT = 640;
 
 export function createInitialBreakoutState() {
   return {
@@ -12,12 +12,12 @@ export function createInitialBreakoutState() {
     paused: false,
     inPlay: false, // true when ball has been launched from paddle
     paddle: {
-      x: 200,
-      y: 605,
-      width: 100,
-      baseWidth: 100,
-      height: 14,
-      speed: 9,
+      x: 195,
+      y: 590,
+      width: 90,
+      baseWidth: 90,
+      height: 12,
+      speed: 8.5,
       vx: 0,
       targetX: null,
     },
@@ -61,11 +61,12 @@ export function buildLevel(level) {
   const bricks = [];
   const rows = Math.min(5 + level, 8);
   const cols = 8;
-  const padding = 6;
-  const topOffset = 70;
-  const totalPadding = (cols + 1) * padding;
-  const brickWidth = (CANVAS_WIDTH - totalPadding) / cols;
-  const brickHeight = 20;
+  const padding = 5;
+  const sideMargin = 12;
+  const topOffset = 65;
+  const availableWidth = CANVAS_WIDTH - sideMargin * 2 - (cols - 1) * padding;
+  const brickWidth = availableWidth / cols;
+  const brickHeight = 18;
 
   const colorPalettes = [
     { name: 'cyan', fill: '#06b6d4', glow: 'rgba(6, 182, 212, 0.5)', points: 100 },
@@ -78,7 +79,7 @@ export function buildLevel(level) {
 
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      const x = padding + c * (brickWidth + padding);
+      const x = sideMargin + c * (brickWidth + padding);
       const y = topOffset + r * (brickHeight + padding);
 
       let tier = 1;
@@ -152,7 +153,7 @@ export function resetBreakoutGame(state, startLevel = 1) {
 
   state.paddle.width = state.paddle.baseWidth;
   state.paddle.x = (CANVAS_WIDTH - state.paddle.width) / 2;
-  state.paddle.y = 605;
+  state.paddle.y = 590;
   state.paddle.targetX = null;
 
   state.bricks = buildLevel(state.level);
@@ -164,11 +165,11 @@ export function resetBallOnPaddle(state) {
   state.balls = [
     {
       x: state.paddle.x + state.paddle.width / 2,
-      y: state.paddle.y - 8,
+      y: state.paddle.y - 7,
       vx: 0,
       vy: 0,
       speed: 6.0 + Math.min(state.level * 0.4, 2.5),
-      radius: 6.5,
+      radius: 6,
       active: true,
       trail: [],
       isFireball: state.fireballTimer > 0,

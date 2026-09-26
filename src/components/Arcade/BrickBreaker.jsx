@@ -75,7 +75,7 @@ export default function BrickBreaker() {
 
     const handleKeyDown = (e) => {
       gameRef.current.keys[e.code] = true;
-      if (['Space', 'ArrowLeft', 'ArrowRight'].includes(e.code)) {
+      if (['Space', 'ArrowLeft', 'ArrowRight', 'KeyA', 'KeyD'].includes(e.code)) {
         e.preventDefault();
       }
       if (e.code === 'Space' && gameRef.current.active) {
@@ -154,16 +154,14 @@ export default function BrickBreaker() {
   };
 
   return (
-    <div className="flex flex-col items-center select-none w-full max-w-xl mx-auto">
-      {/* Top Cyber HUD Bar */}
-      <div className="w-full bg-slate-900/90 border border-slate-800 rounded-t-2xl p-3 sm:p-4 backdrop-blur-md flex items-center justify-between shadow-lg">
-        {/* Lives & Level */}
-        <div className="flex items-center gap-3 sm:gap-5">
-          <div className="flex items-center gap-1.5">
-            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-slate-400">
-              LIVES
-            </span>
-            <div className="flex gap-1">
+    <div className="flex flex-col items-center select-none w-full">
+      {/* Top Cyber HUD Bar - perfectly matched to 480px cabinet width */}
+      <div className="w-full max-w-[480px] bg-slate-900/90 border border-slate-800 rounded-t-2xl p-3 flex items-center justify-between text-xs text-slate-300 shadow-lg">
+        {/* Lives & Sector */}
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 font-mono">
+            <span className="text-[11px] text-slate-400 uppercase">LIVES</span>
+            <div className="flex gap-0.5">
               {Array.from({ length: 5 }).map((_, idx) => (
                 <Heart
                   key={idx}
@@ -177,51 +175,33 @@ export default function BrickBreaker() {
             </div>
           </div>
 
-          <div className="h-4 w-px bg-slate-800" />
-
-          <div>
-            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-slate-400">
-              SECTOR
-            </span>
-            <div className="text-xs sm:text-sm font-black text-cyan-400 font-mono">
-              0{level}
-            </div>
+          <div className="text-[11px] font-mono text-cyan-400">
+            SEC: <span className="font-bold font-mono">0{level}</span>
           </div>
         </div>
 
-        {/* Score & High Score */}
-        <div className="flex items-center gap-4 sm:gap-6">
-          <div className="text-right">
-            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-slate-400">
-              SCORE
-            </span>
-            <div className="text-sm sm:text-base font-black text-white font-mono tracking-tight">
-              {score.toLocaleString()}
-            </div>
+        {/* Score & High Score & Mute */}
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 font-mono">
+            <Trophy className="w-3.5 h-3.5 text-amber-400" />
+            <span className="font-bold text-white">{score}</span>
+          </div>
+          <div className="text-[11px] text-slate-500 font-mono hidden xs:block">
+            HI: <span className="text-slate-300">{highScore}</span>
           </div>
 
-          <div className="text-right hidden xs:block">
-            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-amber-400/80 flex items-center gap-1 justify-end">
-              <Trophy className="w-3 h-3 text-amber-400" /> HI
-            </span>
-            <div className="text-sm sm:text-base font-black text-amber-400 font-mono tracking-tight">
-              {highScore.toLocaleString()}
-            </div>
-          </div>
-
-          {/* Sound Mute Toggle */}
           <button
             onClick={handleToggleMute}
-            className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
-            title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
+            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-1"
+            title={isMuted ? 'Unmute' : 'Mute'}
           >
-            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
           </button>
         </div>
       </div>
 
       {/* Active Power-up Badges Strip */}
-      <div className="w-full bg-slate-950/80 border-x border-slate-800 px-3 py-1.5 flex items-center justify-center gap-2 overflow-x-auto min-h-[30px]">
+      <div className="w-full max-w-[480px] bg-slate-950/95 border-x border-slate-800 px-3 py-1 flex items-center justify-center gap-2 overflow-x-auto min-h-[26px]">
         {activeLaser && (
           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30 animate-pulse">
             <Zap className="w-3 h-3" /> LASER CANNON
@@ -244,13 +224,13 @@ export default function BrickBreaker() {
         )}
         {!activeLaser && !activeFireball && !activeWide && !activeShield && (
           <span className="text-[10px] font-mono text-slate-500">
-            SMASH BRICKS TO REVEAL POWER-UPS
+            SMASH BRICKS FOR POWER-UPS
           </span>
         )}
       </div>
 
-      {/* Canvas Game Arena Container */}
-      <div className="relative w-full aspect-[500/650] max-w-[500px] border-x border-b border-slate-800 bg-slate-950 rounded-b-2xl overflow-hidden shadow-2xl">
+      {/* Main Canvas Container - perfectly flush with HUD and bottom bar */}
+      <div className="relative w-full max-w-[480px] aspect-[3/4] border-x border-slate-800 bg-slate-950 overflow-hidden shadow-2xl shadow-cyan-500/10">
         <canvas
           ref={canvasRef}
           width={CANVAS_WIDTH}
@@ -277,7 +257,7 @@ export default function BrickBreaker() {
 
             <button
               onClick={startGame}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/20 active:scale-95 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/20 active:scale-95 transition-all cursor-pointer"
             >
               <Play className="w-4 h-4 fill-white" />
               <span>INITIALIZE MISSION</span>
@@ -316,7 +296,7 @@ export default function BrickBreaker() {
 
             <button
               onClick={startGame}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/25 active:scale-95 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/25 active:scale-95 transition-all cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
               <span>REDEPLOY PADDLE</span>
@@ -325,8 +305,14 @@ export default function BrickBreaker() {
         )}
       </div>
 
+      {/* Bottom Controls Legend - matches JetShooter's rounded-b-2xl */}
+      <div className="w-full max-w-[480px] bg-slate-900/80 border border-slate-800 rounded-b-2xl p-3 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+        <span>WASD / Mouse to Move</span>
+        <span>Space to Launch & Fire</span>
+      </div>
+
       {/* On-Screen Mobile Action Touch Bar */}
-      <div className="w-full max-w-[500px] mt-4 flex items-center justify-between gap-3 px-2 sm:hidden">
+      <div className="w-full max-w-[480px] mt-4 flex items-center justify-between gap-3 px-2 sm:hidden">
         <button
           onTouchStart={() => {
             gameRef.current.keys['ArrowLeft'] = true;
