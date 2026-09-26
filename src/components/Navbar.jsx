@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, FileText, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Sun, Moon, FileText, ArrowUpRight, Gamepad2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export default function Navbar({ darkMode, setDarkMode }) {
+export default function Navbar({ onNavigate }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -57,6 +57,15 @@ export default function Navbar({ darkMode, setDarkMode }) {
               </a>
             ))}
 
+            {/* Minigame Arcade Link */}
+            <button
+              onClick={() => onNavigate && onNavigate('/arcade')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-purple-300 hover:text-white bg-purple-950/40 hover:bg-purple-900/60 border border-purple-500/30 rounded-lg shadow-sm shadow-purple-500/10 transition-all hover:scale-105 cursor-pointer"
+            >
+              <Gamepad2 className="w-3.5 h-3.5 text-purple-400" />
+              <span>Arcade</span>
+            </button>
+
             <div className="flex items-center gap-3 pl-4 border-l border-slate-800">
               {/* Resume Button */}
               <a
@@ -97,6 +106,16 @@ export default function Navbar({ darkMode, setDarkMode }) {
               {link.name}
             </a>
           ))}
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              if (onNavigate) onNavigate('/arcade');
+            }}
+            className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-base font-medium text-purple-300 hover:bg-purple-900/20 transition-colors text-left"
+          >
+            <Gamepad2 className="w-4 h-4 text-purple-400" />
+            <span>Minigame Arcade</span>
+          </button>
           <div className="pt-2">
             <a
               href={portfolioData.personal.resumeUrl}
