@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, Phone, MapPin, Shield } from 'lucide-react';
+import { Mail, Copy, Check, Send, Phone, MapPin, Shield, Loader2, AlertCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+
+const CONTACT_API_URL = 'https://s50wv7bos4.execute-api.us-east-1.amazonaws.com/contact';
 
 export default function Contact() {
   const { personal, socials } = portfolioData;
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleCopyEmail = () => {
@@ -21,9 +25,35 @@ export default function Contact() {
     setTimeout(() => setCopiedPhone(false), 2000);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(CONTACT_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message. Please try again.');
+      }
+
+      setFormSubmitted(true);
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setErrorMessage(
+        err.message || 'Unable to deliver message right now. Please email me directly.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -190,12 +220,33 @@ export default function Contact() {
                   />
                 </div>
 
+                {errorMessage && (
+                  <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-md shadow-blue-600/30 transition-all hover:scale-[1.01]"
+                  disabled={isSubmitting}
+                  className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all ${
+                    isSubmitting
+                      ? 'bg-blue-600/70 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-500 shadow-md shadow-blue-600/30 hover:scale-[1.01]'
+                  }`}
                 >
-                  <Send className="w-4 h-4" />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending Message...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
