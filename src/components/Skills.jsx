@@ -44,7 +44,8 @@ export default function Skills() {
 
               <div className="flex flex-wrap gap-2.5">
                 {group.items.map((skill, sIdx) => {
-                  const isAws = skill.toLowerCase().includes('aws') || skill.toLowerCase().includes('s3') || skill.toLowerCase().includes('cloudfront') || skill.toLowerCase().includes('route 53') || skill.toLowerCase().includes('dynamodb');
+                  const sLower = skill.toLowerCase();
+                  const isAws = sLower.includes('aws') || sLower.includes('s3') || sLower.includes('cloudfront') || sLower.includes('route 53') || sLower.includes('lambda') || sLower.includes('api gateway') || sLower.includes('ses') || sLower.includes('serverless');
                   return (
                     <span
                       key={sIdx}

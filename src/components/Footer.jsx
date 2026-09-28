@@ -23,8 +23,8 @@ export default function Footer() {
 
           {/* Hosting Shoutout */}
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-[11px] text-slate-400">
-            <Cloud className="w-3.5 h-3.5 text-blue-400" />
-            <span>Serverless AWS: S3 + CloudFront + Route 53</span>
+            <Cloud className="w-3.5 h-3.5 text-amber-400" />
+            <span>AWS Serverless: S3 • CloudFront • Lambda • API Gateway • SES</span>
           </div>
 
           {/* Back to top */}

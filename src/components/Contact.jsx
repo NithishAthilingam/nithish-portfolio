@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, Phone, MapPin, Shield, Loader2, AlertCircle } from 'lucide-react';
+import { Mail, Copy, Check, Send, Phone, MapPin, Shield, Loader2, AlertCircle, Cloud } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 const CONTACT_API_URL = 'https://s50wv7bos4.execute-api.us-east-1.amazonaws.com/contact';
@@ -248,6 +248,11 @@ export default function Contact() {
                     </>
                   )}
                 </button>
+
+                <div className="pt-2 flex items-center justify-center gap-1.5 text-[11px] text-slate-500 font-mono">
+                  <Cloud className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Powered by AWS Serverless (API Gateway • Lambda • SES)</span>
+                </div>
               </form>
             )}
           </div>

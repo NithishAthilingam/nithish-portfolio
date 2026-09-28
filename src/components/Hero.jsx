@@ -134,8 +134,8 @@ export default function Hero() {
 
         {/* Deployment Badge */}
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 shadow-sm">
-          <Cloud className="w-4 h-4 text-blue-400" />
-          <span>Deployed on AWS CloudFront & S3</span>
+          <Cloud className="w-4 h-4 text-amber-400" />
+          <span>Deployed on AWS Serverless (CloudFront • S3 • Lambda)</span>
           <span className="text-slate-600">•</span>
           <span className="font-semibold text-slate-300">nithish.org</span>
         </div>

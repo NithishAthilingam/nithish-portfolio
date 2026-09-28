@@ -34,7 +34,7 @@ export const portfolioData = {
     },
     {
       category: "Cloud, Systems & DevOps",
-      items: ["AWS (S3, CloudFront)", "Docker", "Podman", "GCP", "Azure", "Linux", "Windows", "Jenkins CI/CD", "Git", "Bash", "PowerShell"],
+      items: ["AWS (S3, CloudFront, Lambda, API Gateway, SES, IAM, Route 53)", "Serverless Architecture", "Docker", "Podman", "GCP", "Azure", "Linux", "Windows", "Jenkins CI/CD", "Git", "Bash", "PowerShell"],
     },
     {
       category: "DevOps & Collaboration",
@@ -129,11 +129,11 @@ export const portfolioData = {
     },
     {
       id: "serverless-portfolio-aws",
-      title: "Serverless Cloud Portfolio (nithish.org)",
+      title: "Serverless Cloud Architecture & Microservices (nithish.org)",
       category: "Cloud",
       period: "2026",
-      description: "Production-grade, zero-maintenance personal portfolio hosted on Amazon S3 and CloudFront with Origin Access Control (OAC), SSL via ACM, and Cloudflare DNS routing.",
-      tags: ["AWS S3", "CloudFront", "ACM", "Cloudflare", "React", "Tailwind CSS"],
+      description: "Production-grade, zero-maintenance cloud portfolio hosted on Amazon S3 and CloudFront with Origin Access Control (OAC), ACM SSL, and GitHub Actions CI/CD. Powered by a custom AWS Serverless backend using API Gateway (HTTP API v2), Node.js Lambda, and Amazon SES for transactional contact messaging with zero cold-start latency and sub-penny operating costs.",
+      tags: ["AWS (S3, CloudFront, Lambda, API Gateway, SES)", "Serverless Architecture", "GitHub Actions", "ACM", "React.js", "Tailwind CSS"],
       demoUrl: "https://nithish.org",
       githubUrl: "https://github.com/NithishAthilingam/nithish-portfolio",
       featured: false,
