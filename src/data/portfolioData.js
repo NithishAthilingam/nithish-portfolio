@@ -9,7 +9,7 @@ export const portfolioData = {
     email: "nithish.athilingam@gmail.com",
     phone: "(614) 352-1004",
     availableForHire: true,
-    resumeUrl: "#", // Link to resume PDF in public/
+    resumeUrl: "/resume.pdf",
   },
   socials: {
     github: "https://github.com/NithishAthilingam",
