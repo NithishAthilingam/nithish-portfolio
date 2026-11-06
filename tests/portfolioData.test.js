@@ -20,16 +20,27 @@ describe('Portfolio Data & Static Assets Integrity', () => {
     assert.ok(stats.size > 1000, 'public/resume.pdf should not be empty');
   });
 
-  it('includes all required skill categories and AWS Serverless stack', () => {
+  it('includes all required skill categories, Salesforce/Spring Boot, and AWS Serverless stack', () => {
     const categories = portfolioData.skills.map((s) => s.category);
     assert.ok(categories.includes('Programming Languages'));
     assert.ok(categories.includes('Frameworks & Libraries'));
     assert.ok(categories.includes('Cloud, Systems & DevOps'));
 
+    const languagesCategory = portfolioData.skills.find(
+      (s) => s.category === 'Programming Languages'
+    );
+    assert.ok(languagesCategory.items.includes('Apex (Salesforce)'));
+
+    const frameworksCategory = portfolioData.skills.find(
+      (s) => s.category === 'Frameworks & Libraries'
+    );
+    assert.ok(frameworksCategory.items.includes('Spring Boot'));
+
     const cloudCategory = portfolioData.skills.find(
       (s) => s.category === 'Cloud, Systems & DevOps'
     );
     assert.ok(cloudCategory, 'Cloud category should exist');
+    assert.ok(cloudCategory.items.includes('Salesforce Platform & SFDX'));
 
     const awsEntry = cloudCategory.items.find((item) => item.startsWith('AWS'));
     assert.ok(awsEntry, 'AWS skill entry should exist');
@@ -43,7 +54,7 @@ describe('Portfolio Data & Static Assets Integrity', () => {
 
   it('validates all featured projects have required structure and tags', () => {
     assert.ok(Array.isArray(portfolioData.projects));
-    assert.ok(portfolioData.projects.length >= 5);
+    assert.ok(portfolioData.projects.length >= 6);
 
     for (const project of portfolioData.projects) {
       assert.ok(project.id, 'Project must have an id');
@@ -51,6 +62,13 @@ describe('Portfolio Data & Static Assets Integrity', () => {
       assert.ok(project.description, `Project ${project.id} must have a description`);
       assert.ok(Array.isArray(project.tags) && project.tags.length > 0);
     }
+
+    const claimSyncProject = portfolioData.projects.find(
+      (p) => p.id === 'claimsync-salesforce-springboot'
+    );
+    assert.ok(claimSyncProject, 'ClaimSync Salesforce & Spring Boot project must exist');
+    assert.ok(claimSyncProject.tags.includes('Salesforce Apex'));
+    assert.ok(claimSyncProject.tags.includes('Spring Boot'));
 
     const awsProject = portfolioData.projects.find(
       (p) => p.id === 'serverless-portfolio-aws'

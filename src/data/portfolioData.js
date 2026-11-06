@@ -21,20 +21,20 @@ export const portfolioData = {
     { label: "Years Experience", value: "2+" },
     { label: "Production Services", value: "10+" },
     { label: "Code Test Coverage", value: "90%+" },
-    { label: "Programming Languages", value: "11+" },
+    { label: "Programming Languages", value: "12+" },
   ],
   skills: [
     {
       category: "Programming Languages",
-      items: ["C++", "Python", "C#", "C", "TypeScript", "JavaScript", "Java", "Go", "SQL", "MATLAB", "x86-64 Assembly"],
+      items: ["C++", "Python", "C#", "Java", "Apex (Salesforce)", "C", "TypeScript", "JavaScript", "Go", "SQL / SOQL", "MATLAB", "x86-64 Assembly"],
     },
     {
       category: "Frameworks & Libraries",
-      items: ["React.js", "Next.js", "Node.js", "WPF (.NET)", "TensorFlow", "PyTorch", "pandas", "GTest", "Selenium", "TPM2-tss", "OpenSSL", "Live555", "BeautifulSoup"],
+      items: ["Spring Boot", "React.js", "Next.js", "Node.js", "WPF (.NET)", "JUnit 5", "pytest", "GTest", "Selenium", "TensorFlow", "PyTorch", "pandas", "TPM2-tss", "OpenSSL", "Live555", "BeautifulSoup"],
     },
     {
       category: "Cloud, Systems & DevOps",
-      items: ["AWS (S3, CloudFront, Lambda, API Gateway, SES, IAM, Route 53)", "Serverless Architecture", "Docker", "Podman", "GCP", "Azure", "Linux", "Windows", "Jenkins CI/CD", "Git", "Bash", "PowerShell"],
+      items: ["Salesforce Platform & SFDX", "AWS (S3, CloudFront, Lambda, API Gateway, SES, IAM, Route 53)", "Serverless Architecture", "GitHub Actions CI/CD", "Jenkins CI/CD", "Docker", "Podman", "GCP", "Azure", "Linux", "Windows", "Git", "Bash", "PowerShell"],
     },
     {
       category: "DevOps & Collaboration",
@@ -67,6 +67,18 @@ export const portfolioData = {
     },
   ],
   projects: [
+    {
+      id: "claimsync-salesforce-springboot",
+      title: "ClaimSync — Salesforce Apex & Spring Boot Claims Integration",
+      category: "Enterprise & Cloud",
+      period: "2026",
+      description: "End-to-end insurance claims adjudication and fraud-scoring platform integrating Salesforce Platform (Custom Objects Policy__c & Claim__c, bulkified OOP Apex Triggers, and Queueable REST callouts with 93% @isTest coverage) with a Java 21 Spring Boot risk-scoring microservice and a Python pytest + GitHub Actions CI/CD quality pipeline.",
+      tags: ["Salesforce Apex", "Salesforce DX (SFDX)", "Java 21", "Spring Boot", "Python (pytest)", "GitHub Actions", "JUnit 5"],
+      demoUrl: "",
+      githubUrl: "https://github.com/NithishAthilingam/claimsync-salesforce-springboot",
+      featured: true,
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+    },
     {
       id: "ecotech-framework",
       title: "EcoTech Framework (Sponsored by Honda)",
