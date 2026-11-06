@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Mail, Award, CheckCircle2, ExternalLink } from 'lucide-react';
-import { MicrosoftLogo, BloombergLogo, BoomiLogo, OhioStateLogo } from './CompanyLogos';
+import { MicrosoftLogo, BloombergLogo, BoomiLogo } from './CompanyLogos';
 import { portfolioData } from '../data/portfolioData';
 
 export default function About() {

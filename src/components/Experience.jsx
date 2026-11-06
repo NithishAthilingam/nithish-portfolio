@@ -3,7 +3,7 @@ import { Briefcase, GraduationCap, HeartHandshake, Calendar, MapPin, ExternalLin
 import { NorthropGrummanLogo, BattelleLogo, AdVonLogo, OhioStateLogo, FirstAllianceLogo } from './CompanyLogos';
 import hipMentorshipImg from '../assets/hip_mentorship.jpg';
 import churchThumb from '../assets/church_linkedin_thumb.png';
-import firstAllianceSymbol from '../assets/first_alliance_symbol.png';
+// first_alliance_symbol unused
 import { portfolioData } from '../data/portfolioData';
 
 export default function Experience() {

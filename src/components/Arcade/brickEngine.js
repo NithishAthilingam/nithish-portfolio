@@ -1,7 +1,7 @@
 // Breakout (Cyber Breakout) Engine
 // 60 FPS Decoupled Physics and Canvas Rendering
 
-import { sound } from './soundEffects';
+import { sound } from './soundEffects.js';
 
 export const CANVAS_WIDTH = 480;
 export const CANVAS_HEIGHT = 640;
@@ -531,7 +531,7 @@ export function updateBreakoutEngine(state, callbacks) {
         if (!ball.isFireball) {
           // Normal ball bounces off
           const prevX = ball.x - ball.vx;
-          const prevY = ball.y - ball.vy;
+          // Check horizontal vs vertical bounce
 
           if (prevX + ball.radius <= b.x || prevX - ball.radius >= b.x + b.width) {
             ball.vx = -ball.vx;

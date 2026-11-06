@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Layers, ArrowUpRight, BookOpen, Lock } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Lock } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 

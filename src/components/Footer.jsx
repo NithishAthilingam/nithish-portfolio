@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Cloud, Heart } from 'lucide-react';
+import { ArrowUp, Cloud } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Footer() {

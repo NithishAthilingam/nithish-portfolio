@@ -143,7 +143,7 @@ export default function BrickBreaker() {
     gameRef.current.paddle.targetX = canvasX;
   };
 
-  const handlePointerDown = (e) => {
+  const handlePointerDown = () => {
     if (!gameRef.current.active) return;
     sound.init();
     if (!gameRef.current.inPlay) {

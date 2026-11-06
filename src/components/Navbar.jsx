@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, FileText, ArrowUpRight, Gamepad2 } from 'lucide-react';
+import { Menu, X, FileText, Gamepad2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Navbar({ onNavigate }) {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Gamepad2, Cpu, Sparkles, Volume2, Grid, Rocket, Shield } from 'lucide-react';
+import { ArrowLeft, Gamepad2, Cpu, Sparkles, Volume2, Grid, Rocket } from 'lucide-react';
 import JetShooter from './JetShooter';
 import BrickBreaker from './BrickBreaker';
 

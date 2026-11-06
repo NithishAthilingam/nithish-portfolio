@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, Phone, MapPin, Shield, Loader2, AlertCircle, Cloud } from 'lucide-react';
+import { Mail, Copy, Check, Send, Phone, Loader2, AlertCircle, Cloud } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 const CONTACT_API_URL = 'https://s50wv7bos4.execute-api.us-east-1.amazonaws.com/contact';
 
 export default function Contact() {
-  const { personal, socials } = portfolioData;
+  const { personal } = portfolioData;
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);

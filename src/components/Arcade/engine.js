@@ -1,4 +1,4 @@
-import { sound } from './soundEffects';
+import { sound } from './soundEffects.js';
 
 export function createInitialGameState() {
   return {

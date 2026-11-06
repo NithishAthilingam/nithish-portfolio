@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Mail, Sparkles, Cloud, MapPin, Phone, Building2 } from 'lucide-react';
+import { ArrowRight, Mail, Cloud, MapPin, Phone } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { NorthropGrummanLogo, OhioStateLogo } from './CompanyLogos';
 import { portfolioData } from '../data/portfolioData';
