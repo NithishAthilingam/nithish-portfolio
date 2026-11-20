@@ -4,7 +4,6 @@ import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
 // Custom Project Imagery
-import salesforceImg from '../assets/salesforce_logo.jpg';
 import ecotechImg from '../assets/EcoTechFramework.webp';
 import b52Img from '../assets/b52_bomber.jpg';
 import tpmImg from '../assets/tpm_chip.webp';
@@ -12,7 +11,6 @@ import cloudImg from '../assets/cloud_portfolio.png';
 import gimbalImg from '../assets/gimbal.webp';
 
 const customProjectImages = {
-  'claimsync-salesforce-springboot': salesforceImg,
   'ecotech-framework': ecotechImg,
   'b52-simulation': b52Img,
   'tpm-crypto-hardening': tpmImg,
